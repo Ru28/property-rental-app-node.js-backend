@@ -11,6 +11,9 @@ then(()=> console.log("MongoDB Connected"))
 
 app.use(express.json());
 
+app.use('/', (req,res)=>{
+   res.json({message: "hello from Express App"})
+});
 app.use("/auth",userRoute);
 
 
