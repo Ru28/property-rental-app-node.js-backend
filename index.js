@@ -10,11 +10,8 @@ then(()=> console.log("MongoDB Connected"))
 .catch((err)=> console.log("MongoDB connection error:", err));
 
 app.use(express.json());
+app.use('/auth',userRoute);
 
-app.use('/', (req,res)=>{
-   res.json({message: "hello from Express App"})
-});
-app.use("/auth",userRoute);
 
 
 const PORT = process.env.PORT || 3000;

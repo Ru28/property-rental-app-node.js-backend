@@ -34,10 +34,10 @@ const handleUserSignup = async(req,res) =>{
     }
 } 
 
-const handleUserLogin = async(req,res,next) =>{
+const handleUserLogin = async(req,res) =>{
     const { email, password} = req.body;
     try{
-       const user = await User.findOne({email,password});
+       const user = await User.findOne({email});
        if(!user){
           return res.status(400).json({message: "Invalid credentials"})
        }
@@ -45,7 +45,7 @@ const handleUserLogin = async(req,res,next) =>{
        if(!isMatch){
         return res.status(400).json({message: 'Invalid credentials'});
        }
-       
+
        const token = jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:'1h'});
        res.json({
             user: {
@@ -53,7 +53,7 @@ const handleUserLogin = async(req,res,next) =>{
                 name: user.name,
                 email: user.email,
             },
-            token,
+           token
        });
     }
     catch(error){
