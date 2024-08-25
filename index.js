@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const userRoute = require('./routes/user')
+const propertyRoute = require('./routes/property');
 
 
 const app = express();
@@ -13,6 +14,7 @@ then(()=> console.log("MongoDB Connected"))
 app.use(cors());
 app.use(express.json());
 app.use('/auth',userRoute);
+app.use('/peroperty',propertyRoute);
 
 
 
