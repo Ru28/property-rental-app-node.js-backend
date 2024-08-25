@@ -14,7 +14,7 @@ then(()=> console.log("MongoDB Connected"))
 app.use(cors());
 app.use(express.json());
 app.use('/auth',userRoute);
-app.use('/peroperty',propertyRoute);
+app.use('/property',propertyRoute);
 
 
 
