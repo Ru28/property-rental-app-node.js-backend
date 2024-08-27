@@ -12,7 +12,6 @@ const addPropertyDetails = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    const imagePath = req.file ? req.file.path : null;
 
     // Create a new property
     const newProperty = new Property({
@@ -23,7 +22,7 @@ const addPropertyDetails = async (req, res) => {
       location,
       bedrooms,
       amenities,
-      image: imagePath,
+      image,
     });
 
     // Save the property to the database
